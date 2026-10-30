@@ -1,0 +1,101 @@
+SQLAlchemy with Python
+
+📌 Introduction
+
+SQLAlchemy is a Python library used to interact with relational databases. It provides tools for executing SQL queries and working with database tables through Python objects.
+
+SQLAlchemy supports databases such as SQLite, PostgreSQL, and MySQL.
+
+🎯 Project Objectives
+
+Learn the basics of SQLAlchemy.
+
+Connect Python applications to databases.
+
+Create and manage database tables.
+
+Insert, retrieve, update, and delete records.
+
+Understand Object Relational Mapping (ORM).
+
+🛠️ Technologies Used
+
+Python: The main programming language.
+
+SQLAlchemy: A Python SQL toolkit and Object Relational Mapper (ORM).
+
+SQLite: A lightweight relational database.
+
+✨ Features
+
+Database connection management.
+
+Table creation using Python classes.
+
+Data insertion and retrieval.
+
+Updating and deleting records.
+
+Working with database relationships.
+
+Supporting multiple database systems.
+
+📦 Installation
+
+Install SQLAlchemy using pip:
+
+pip install sqlalchemy 
+
+💻 Example Code
+
+The following example demonstrates how to create a database table and insert and retrieve data using SQLAlchemy.
+
+from sqlalchemy import create_engine, String from sqlalchemy.orm import DeclarativeBase from sqlalchemy.orm import Mapped, mapped_column from sqlalchemy.orm import Session # Create a database connection engine = create_engine("sqlite:///users.db") # Define the base class class Base(DeclarativeBase): pass # Define the User model class User(Base): tablename = "users" id: Mapped[int] = mapped_column(primary_key=True) name: Mapped[str] = mapped_column(String(50)) # Create the database table Base.metadata.create_all(engine) # Insert and retrieve data with Session(engine) as session: user = User(name="Ali") session.add(user) session.commit() users = session.query(User).all() for user in users: print(user.id, user.name) 
+
+🚀 How to Run
+
+Install Python.
+
+Install SQLAlchemy.
+
+Create a Python file named main.py.
+
+Copy the example code into the file.
+
+Run the application:
+
+python main.py 
+
+A database file named users.db will be created automatically.
+
+📚 Important Concepts
+
+Engine: Manages communication between Python and the database.
+
+Model: A Python class representing a database table.
+
+ORM: Allows developers to work with database records as Python objects.
+
+Session: Manages database operations and transactions.
+
+Primary Key: Uniquely identifies each record.
+
+Query: Retrieves data from a database.
+
+📖 CRUD Operations
+
+CRUD represents the four basic database operations.
+
+OperationDescriptionCreateInsert new recordsReadRetrieve recordsUpdateModify existing recordsDeleteRemove records 
+
+🔗 Useful Resources
+
+SQLAlchemy Official Documentation
+
+SQLAlchemy GitHub Repository
+
+Python Official Website
+
+📝 Conclusion
+
+SQLAlchemy makes database programming in Python easier by providing tools for executing SQL statements and mapping database tables to Python classes. It is widely used in backend development and database-driven applications.
